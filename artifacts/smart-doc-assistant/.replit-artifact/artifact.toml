@@ -1,0 +1,23 @@
+kind = "web"
+previewPath = "/"
+title = "Notes Navigator"
+description = "A document Q&A workspace for uploading PDFs and text files, asking questions, and verifying answers against the exact retrieved source passages."
+version = "1.0.0"
+id = "artifacts/smart-doc-assistant"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 26211
+
+[services.development]
+run = "uv run --project ../.. streamlit run app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true --browser.gatherUsageStats false"
+
+[services.production]
+build = [ "uv", "sync", "--project", "../.." ]
+run = "uv run --project ../.. streamlit run app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true --browser.gatherUsageStats false"
+
+[services.env]
+PORT = "26211"
+BASE_PATH = "/"

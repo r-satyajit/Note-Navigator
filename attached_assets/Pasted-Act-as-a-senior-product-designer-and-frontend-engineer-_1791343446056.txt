@@ -1,0 +1,40 @@
+Act as a senior product designer and frontend engineer. Refine the UI/UX of this existing application with the craftsmanship, typographic hierarchy, and structural restraint of an Apple professional tool, while giving the brand a distinctive deep aurora aesthetic.
+
+Product: Notes Navigator — A Smart Document Knowledge Assistant powered by Retrieval-Augmented Generation (RAG). It lets students ingest course PDFs and text notes, query concepts in natural language, and receive context-grounded answers paired with verifiable source citations and similarity scores.
+Audience: First-year university students, researchers, and technical club evaluators reviewing recruitment challenge submissions.
+Main action: Upload lecture documents (.pdf, .txt), ask queries via an interactive chat interface, and expand source citation snippets to verify grounded answers.
+Real content and assets: Existing functional codebase running on Replit with Google Gemini API integration, FAISS vector search, document chunking pipeline, and sample academic PDFs (e.g., tech-round1-brief.pdf).
+Pages and functionality:
+- Document library sidebar with multi-file upload, processing status, and indexed chunk counter.
+- Interactive multi-turn chat stream with clear empty and loading states.
+- Collapsible "View Referenced Document Snippets" drawers below every AI response displaying source chunk text, file name, and relevance match.
+- Quick-action sample query chips for seamless live evaluation.
+Existing stack: Python, Streamlit, Google Gemini API, FAISS vector store, deployed on Replit.
+Reference: Premium dark productivity tools (Linear, Apple Pro dark interfaces) paired with ambient aurora gradient accents.
+
+CRITICAL INSTRUCTION
+Inspect the existing project before altering files. The backend ingestion, FAISS retrieval, and Gemini API integration are fully functional. Preserve all working backend logic, secrets handling (GEMINI_API_KEY / GOOGLE_API_KEY), and existing data pipelines. Apply this overhaul strictly through visual styling, layout refinement, and frontend presentation.
+
+DESIGN DIRECTION
+Base Palette: Deep obsidian/midnight black background (#07090E to #0D1117) with layered navy/slate dark surfaces (#131B2E, #1A233A). High-contrast, crisp typography using off-white for headers (#F3F4F6) and readable slate for body text (#94A3B8).
+
+Aurora Gradient Accent: Implement a refined, luminous aurora effect using soft cyan, electric sapphire, and deep indigo gradients (e.g., linear-gradient(135deg, #06B6D4 0%, #3B82F6 50%, #6366F1 100%)) reserved exclusively for active borders, subtle ambient glow backgrounds, key call-to-action buttons, and source match badges. 
+
+Visual Restraint:
+- Avoid harsh neon overload, rainbow styling, or muddy purple themes.
+- No decorative floating orbs, jittery animations, or excessive glassmorphism.
+- Use crisp 1px borders (#1E293B or subtle rgba highlights) around citation cards and chat message containers.
+- Typography: Use a clean system font stack (-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif) with generous line heights and distinct hierarchy.
+
+CONTENT AND STRUCTURE
+- Lead directly with the product's primary action. Do not add generic marketing fluff, fake statistics, or stock illustrations.
+- Format the source verification section cleanly: display retrieved chunks inside structured, elevated cards showing filename, passage text, and match percentage.
+- Provide 3 to 4 quick-prompt chips above the input bar (e.g., "Summarize key themes", "List core definitions") to enable immediate live demonstrations.
+
+BEHAVIOR & ACCESSIBILITY
+- Preserve normal scrolling and ensure snappy, responsive interactions.
+- Provide smooth loading skeletons or subtle glow animations during document indexing and model inference.
+- Ensure form inputs, file drop zones, and chat boxes have crisp keyboard focus rings and readable contrast ratios.
+
+WORKFLOW
+Review the existing Streamlit layout, inject custom scoped CSS via st.markdown(..., unsafe_allow_html=True) or theme configuration to apply the aurora dark aesthetic, verify responsiveness, and confirm that document upload, FAISS similarity search, and answer generation continue to execute without regression.

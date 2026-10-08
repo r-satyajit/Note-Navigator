@@ -1,0 +1,35 @@
+We are upgrading Notes Navigator from a single-session app to a persistent workspace platform. Implement the following sequentially without breaking the existing Gemini API or Aurora UI theme.
+
+1. Database & Persistence (Deployment-Ready)
+
+Integrate sqlite3 for a persistent local database. Create tables for Spaces (id, name), Chats (id, space_id, chat_history), and Documents (id, space_id, file_path, file_name).
+
+Update the FAISS implementation to save and load indexes to the local disk (e.g., faiss_index_{space_id}) instead of memory.
+
+Ensure all SQLite databases, uploaded files, and FAISS indexes are saved securely in a specific data/ folder so they persist across server restarts.
+
+2. "Your Spaces" Sidebar UI
+
+Build a "Your Spaces" section in the sidebar. Allow the user to create, select, and delete Spaces.
+
+When a Space is active, the main UI must ONLY show documents, chats, and FAISS context linked to that exact Space ID.
+
+Allow multiple separate chat threads within a single Space. Track active space ID and chat ID in st.session_state.
+
+3. PowerPoint Ingestion
+
+Add python-pptx to requirements.txt.
+
+Update document processing to accept .ppt and .pptx files. Extract text from slides/notes, chunk it, and embed it exclusively into the active Space's FAISS index.
+
+4. Space-Specific MCQ Generator Module
+
+Create a "Practice Test" tab inside the active Space's main view. This feature must be strictly isolated to the current space.
+
+Build a UI with a difficulty dropdown: "Very easy", "Easy", "Medium", "Hard", "Very hard".
+
+When the user clicks "Generate Test", query ONLY the active Space's FAISS index. Instruct Gemini to output exactly 5 Multiple Choice Questions based strictly on this retrieved space-specific context.
+
+Force Gemini to return a clean JSON array containing the question, 4 options, and the correct answer.
+
+Render this JSON interactively in Streamlit using radio buttons for the options and a "Submit" button to instantly calculate and display the user's score alongside the correct answers.
